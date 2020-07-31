@@ -11,7 +11,8 @@ import PokeList from './components/PokeList.vue'
 export default {
   data(){
     return {
-      pokemons: []
+      pokemons: [],
+      selectedPokemon: null
     }
   },
   mounted(){
@@ -24,6 +25,9 @@ export default {
     // let promise = Promise.all(this.pokeURL.map(url =>
     //   fetch(url)
     //   .then(res => res.json())).then(pokemons => this.pokemons = pokemons))
+     eventBus.$on('selected-pokemon', (pokemon) => {
+       this.selectedPokemon = pokemon;
+    })
   },
   components: {
     "poke-list": PokeList
