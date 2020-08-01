@@ -1,7 +1,7 @@
 <template lang="html">
   <div id="pokeList">
     <ul>
-      <list-item  v-for="(pokemon, index) in pokemons" :pokemon="pokemon" :key="index"></list-item>
+      <list-item  v-for="(pokemon, index) in pokemons" :name="pokemon.name" :url="pokemon.url" :key="index"></list-item>
     </ul>
   </div>
 

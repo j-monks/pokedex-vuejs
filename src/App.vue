@@ -11,12 +11,11 @@ import PokeList from './components/PokeList.vue'
 export default {
   data(){
     return {
-      pokemons: [],
-      selectedPokemon: null
+      pokemons: []
     }
   },
   mounted(){
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=200")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
     .then(res => res.json())
     .then(pokemons => this.pokemons = pokemons.results)
 
@@ -25,14 +24,11 @@ export default {
     // let promise = Promise.all(this.pokeURL.map(url =>
     //   fetch(url)
     //   .then(res => res.json())).then(pokemons => this.pokemons = pokemons))
-     eventBus.$on('selected-pokemon', (pokemon) => {
-       this.selectedPokemon = pokemon;
-    })
   },
   components: {
     "poke-list": PokeList
   },
-  computed: {
+  computed: { 
     //  getIndex(){
     //   this.pokeURL.forEach(url => this.pokemonU.push(pokemon.url))
     }
