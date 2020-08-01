@@ -1,7 +1,13 @@
 <template>
   <div>
-      <poke-list :pokemons="pokemons"></poke-list>
-      <nav-bar></nav-bar>
+    <nav-bar></nav-bar>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <poke-list :pokemons="pokemons"></poke-list>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -40,6 +46,11 @@ export default {
 </script>
 
 <style>
+  .container {
+    padding-top: 4rem;
+    min-height: 100vh;
+  }
+  
   .navbar {
         background-color: #ef5450 !important;
     }

@@ -1,7 +1,19 @@
 <template lang="html">
-<div class="pokemon">
-      <h3 v-on:click="handleClick">{{name}}</h3>
-      <img class="img" :src="imageUrl"></img>
+<div class="col-md-3 col-sm-6 mb-5">
+  <div class="card">
+    <h5 class="card-header">{{pokeIndex}}</h5>
+    <img class="card-img-top rounded mx-auto mt-2" :src="imageUrl"></img>
+    <!-- <h3 v-on:click="handleClick">{{name}}</h3> -->
+    <div class="card-body mx-auto">
+      <h6 class="card-title">
+        {{name
+          .toLowerCase()
+          .split(" ")
+          .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+          .join(" ")}}
+      </h6>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -46,5 +58,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+  img {
+    width: 5em;
+    height: 5em;
+  }
 </style>

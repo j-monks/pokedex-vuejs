@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="pokeList">
+  <div class="row">
       <list-item  v-for="(pokemon, index) in pokemons" :name="pokemon.name" :url="pokemon.url" :key="index"></list-item>
   </div>
 
