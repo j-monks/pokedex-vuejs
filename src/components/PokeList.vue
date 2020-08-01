@@ -1,8 +1,6 @@
 <template lang="html">
   <div id="pokeList">
-    <ul>
       <list-item  v-for="(pokemon, index) in pokemons" :name="pokemon.name" :url="pokemon.url" :key="index"></list-item>
-    </ul>
   </div>
 
 </template>
@@ -19,7 +17,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  #countriesList {
+  /* #countriesList {
     background: #eee;
     height: 400px;
     overflow-y: scroll;
@@ -39,6 +37,6 @@ export default {
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-  }
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5); */
+  /* } */
 </style>

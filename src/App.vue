@@ -1,12 +1,15 @@
 <template>
   <div>
-    <poke-list :pokemons="pokemons"></poke-list>
+      <poke-list :pokemons="pokemons"></poke-list>
+      <nav-bar></nav-bar>
   </div>
 </template>
 
 <script>
 import { eventBus } from './main.js'
+import "bootstrap/dist/css/bootstrap.min.css"
 import PokeList from './components/PokeList.vue'
+import NavBar from "./components/NavBar.vue"
 
 export default {
   data(){
@@ -26,15 +29,19 @@ export default {
     //   .then(res => res.json())).then(pokemons => this.pokemons = pokemons))
   },
   components: {
-    "poke-list": PokeList
+    "poke-list": PokeList, 
+    "nav-bar": NavBar
   },
   computed: { 
-    //  getIndex(){
+    //  getIndex(){ 
     //   this.pokeURL.forEach(url => this.pokemonU.push(pokemon.url))
     }
   }
 </script>
 
 <style>
+  .navbar {
+        background-color: #ef5450 !important;
+    }
 
 </style>
