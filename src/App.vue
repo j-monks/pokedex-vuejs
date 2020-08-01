@@ -47,12 +47,16 @@ export default {
 
 <style>
   .container {
-    padding-top: 4rem;
+    padding-top: 5rem;
     min-height: 100vh;
   }
-  
+
   .navbar {
         background-color: #ef5450 !important;
+    }
+
+   #navBarSearchInput {
+        width: 430px;
     }
 
 </style>
