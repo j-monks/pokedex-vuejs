@@ -32,12 +32,6 @@ export default {
     props: ["selectedPokemon"],
 
     methods: {
-        getDetail() {
-            fetch(this.selectedPokemon)
-                .then(res => res.json())
-                .then(details => this.pokemonDetails = details)
-        },
-
         upperCase(name) {
             const newName = name.toLowerCase()
                 .split(" ")
