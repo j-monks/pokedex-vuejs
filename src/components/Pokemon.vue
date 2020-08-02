@@ -5,12 +5,12 @@
 			<img class="card-img-top rounded mx-auto mt-2" :src="imageUrl"></img>
 			<div class="card-body mx-auto">
 				<h6 class="card-title">
-          {{name
-            .toLowerCase()
-            .split(" ")
-            .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
-            .join(" ")}}
-        </h6>
+                    {{name
+                        .toLowerCase()
+                        .split(" ")
+                        .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+                        .join(" ")}}
+                </h6>
 			</div>
 		</div>
 	</div>
