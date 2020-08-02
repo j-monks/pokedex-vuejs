@@ -1,9 +1,16 @@
 <template>
-  
-      <h1>{{selectedPokemon}}</h1>
-  
+ <div class="col-md-3 col-sm-6 mb-5 mx-auto">
+  <div class="card">
+    <h5 class="card-header">Selected-Pokemon</h5>
+    <div class="card-body mx-auto">
+      <h6 class="card-title">
+        {{selectedPokemon}}
+      </h6>
+    </div>
+  </div>
+</div>   
 </template>
-
+   
 <script>
 
 
@@ -14,11 +21,6 @@ export default {
 </script>
 
 <style>
-img {
-    width: 5em;
-    height: 5em;
-  }
-
   .card {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
