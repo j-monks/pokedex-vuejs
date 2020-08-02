@@ -2,6 +2,7 @@
   <div>
     <nav-bar></nav-bar>
     <div class="container">
+       <poke-detail :selectedPokemon="selectedPokemon"></poke-detail>
       <div class="row">
         <div class="col">
           <poke-list :pokemons="pokemons"></poke-list>
@@ -16,17 +17,24 @@ import { eventBus } from './main.js'
 import "bootstrap/dist/css/bootstrap.min.css"
 import PokeList from './components/PokeList.vue'
 import NavBar from "./components/NavBar.vue"
+import PokeDetail from "./components/PokeDetail.vue"
 
 export default {
   data(){
     return {
-      pokemons: []
+      pokemons: [],
+      selectedPokemon: null
     }
   },
   mounted(){
     fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
     .then(res => res.json())
     .then(pokemons => this.pokemons = pokemons.results)
+
+
+    eventBus.$on('pokemon-selected', (selectedPokemon) => {
+      this.selectedPokemon = selectedPokemon;
+    })
 
     // .results.forEach(pokemon => this.pokeURL.push(pokemon.url))
 
@@ -36,7 +44,8 @@ export default {
   },
   components: {
     "poke-list": PokeList, 
-    "nav-bar": NavBar
+    "nav-bar": NavBar,
+    "poke-detail": PokeDetail
   },
   computed: { 
     //  getIndex(){ 

@@ -1,6 +1,6 @@
 <template lang="html">
 <div class="col-md-3 col-sm-6 mb-5">
-  <div class="card">
+  <div v-on:click="handleClick" class="card">
     <h5 class="card-header">{{pokeIndex}}</h5>
     <img class="card-img-top rounded mx-auto mt-2" :src="imageUrl"></img>
     <!-- <h3 v-on:click="handleClick">{{name}}</h3> -->
@@ -45,7 +45,7 @@ export default {
   
   methods: {
     handleClick(){
-      eventBus.$emit('pokemon-selected', this.pokemon)
+      eventBus.$emit('pokemon-selected', this.url)
     },
     getIndex() {
      return this.pokeIndex = this.url.split("/")[6]
@@ -74,5 +74,4 @@ export default {
   .card:hover {
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     }
-
 </style>
