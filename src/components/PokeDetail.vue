@@ -1,12 +1,18 @@
 <template>
  <div class="col-md-3 col-sm-6 mb-5 mx-auto">
   <div class="card mx-auto">
-    <div class="header mx-auto">
-        <h5 class="card-header">{{selectedPokemon.name}}</h5>
+    <div class="header">
+        <h5 class="card-header text-center">{{selectedPokemon.name}}</h5>
     </div>  
     <div class="card-body mx-auto">
       <h6 class="card-title">
         Base XP: {{selectedPokemon.base_experience}}
+      </h6>
+      <h6 class="card-title">
+        Ability: {{upperCase(selectedPokemon.abilities[0].ability.name)}}
+      </h6>
+      <h6 class="card-title">
+        Type: {{selectedPokemon.types[0].type.name}}
       </h6>
     </div>
   </div>
@@ -35,6 +41,13 @@ export default {
    mounted(){
        getDetail();
   },
+  
+  computed: {
+      getAbilities() {
+          const abilities = this.selectedPokemon.abilities;
+          return this.abilities = abilities;
+      }
+  },
 
   methods: {
       getDetail() {
@@ -42,8 +55,14 @@ export default {
             .then(res => res.json())
             .then(details => this.pokemonDetails = details)
       },
-      getAbilities() {
+
+      upperCase(name) {
+         const newName = name.toLowerCase()
+          .split(" ")
+          .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+          .join(" ")
           
+          return newName;
       }
   }
 
@@ -57,16 +76,6 @@ export default {
     -moz-user-select: none;
     user-select: none;
     -o-user-select: none;
-  }
-
-  .card-header {
-      position: relative;
-      width: 100%;
-  }
-
-  .header {
-      position: relative;
-      width: 100%;
   }
 
   .card:hover {
