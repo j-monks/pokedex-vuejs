@@ -1,72 +1,54 @@
 <template>
- <div class="col-md-3 col-sm-6 mb-5 mx-auto">
-  <div class="card mx-auto">
-    <div class="header">
-        <h5 class="card-header text-center">{{upperCase(selectedPokemon.name)}}</h5>
-    </div>  
-    <div class="card-body mx-auto">
-      <h6 class="card-title">
-        Base XP: {{selectedPokemon.base_experience}}
-      </h6>
-      <h6 class="card-title">
-        Ability: {{upperCase(selectedPokemon.abilities[0].ability.name)}}
-      </h6>
-      <h6 class="card-title">
-        Type: {{upperCase(selectedPokemon.types[0].type.name)}}
-      </h6>
+    <div class="col-md-3 col-sm-6 mb-5 mx-auto">
+        <div class="card mx-auto">
+            <div class="header">
+                <h5 class="card-header text-center">{{upperCase(selectedPokemon.name)}}</h5>
+            </div>
+            <div class="card-body mx-auto">
+                <h6 class="card-title">
+                    Base XP: {{selectedPokemon.base_experience}}
+                </h6>
+                <h6 class="card-title">
+                    Ability: {{upperCase(selectedPokemon.abilities[0].ability.name)}}
+                </h6>
+                <h6 class="card-title">
+                    Type: {{upperCase(selectedPokemon.types[0].type.name)}}
+                </h6>
+            </div>
+        </div>
     </div>
-  </div>
-</div>   
 </template>
    
 <script>
 export default {
     created() {
-    
 
-    console.log(this.selectedPokemon);
-    
+
+        console.log(this.selectedPokemon);
+
     },
-    
-   name: "poke-detail",
-   props: ["selectedPokemon"],
-   
-   data() {
-       return {
-           pokemonDetails: [],
-           abilities: []
-       }
-   },
 
-   mounted(){
-       getDetail();
-  },
-  
-  computed: {
-      getAbilities() {
-          const abilities = this.selectedPokemon.abilities;
-          return this.abilities = abilities;
-      }
-  },
+    name: "poke-detail",
+    props: ["selectedPokemon"],
 
-  methods: {
-      getDetail() {
-        fetch(this.selectedPokemon)
-            .then(res => res.json())
-            .then(details => this.pokemonDetails = details)
-      },
+    methods: {
+        getDetail() {
+            fetch(this.selectedPokemon)
+                .then(res => res.json())
+                .then(details => this.pokemonDetails = details)
+        },
 
-      upperCase(name) {
-         const newName = name.toLowerCase()
-          .split(" ")
-          .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
-          .join(" ")
-          
-          return newName;
-      }
-  }
+        upperCase(name) {
+            const newName = name.toLowerCase()
+                .split(" ")
+                .map(letter => letter.charAt(0).toUpperCase() + letter.substring(1))
+                .join(" ")
 
-}
+            return newName;
+        }
+    }
+
+} 
 </script>
 
 <style>
