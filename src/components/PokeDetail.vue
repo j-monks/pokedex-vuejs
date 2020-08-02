@@ -2,7 +2,7 @@
  <div class="col-md-3 col-sm-6 mb-5 mx-auto">
   <div class="card mx-auto">
     <div class="header">
-        <h5 class="card-header text-center">{{selectedPokemon.name}}</h5>
+        <h5 class="card-header text-center">{{upperCase(selectedPokemon.name)}}</h5>
     </div>  
     <div class="card-body mx-auto">
       <h6 class="card-title">
@@ -12,7 +12,7 @@
         Ability: {{upperCase(selectedPokemon.abilities[0].ability.name)}}
       </h6>
       <h6 class="card-title">
-        Type: {{selectedPokemon.types[0].type.name}}
+        Type: {{upperCase(selectedPokemon.types[0].type.name)}}
       </h6>
     </div>
   </div>
