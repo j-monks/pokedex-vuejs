@@ -1,10 +1,12 @@
 <template>
  <div class="col-md-3 col-sm-6 mb-5 mx-auto">
-  <div class="card">
-    <h5 class="card-header">Selected-Pokemon</h5>
+  <div class="card mx-auto">
+    <div class="header mx-auto">
+        <h5 class="card-header">{{selectedPokemon.name}}</h5>
+    </div>  
     <div class="card-body mx-auto">
       <h6 class="card-title">
-        {{selectedPokemon}}
+        Base XP: {{selectedPokemon.base_experience}}
       </h6>
     </div>
   </div>
@@ -12,11 +14,39 @@
 </template>
    
 <script>
-
-
 export default {
+    created() {
+    
+
+    console.log(this.selectedPokemon);
+    
+    },
+    
    name: "poke-detail",
-   props: ["selectedPokemon"] 
+   props: ["selectedPokemon"],
+   
+   data() {
+       return {
+           pokemonDetails: [],
+           abilities: []
+       }
+   },
+
+   mounted(){
+       getDetail();
+  },
+
+  methods: {
+      getDetail() {
+        fetch(this.selectedPokemon)
+            .then(res => res.json())
+            .then(details => this.pokemonDetails = details)
+      },
+      getAbilities() {
+          
+      }
+  }
+
 }
 </script>
 
@@ -27,6 +57,16 @@ export default {
     -moz-user-select: none;
     user-select: none;
     -o-user-select: none;
+  }
+
+  .card-header {
+      position: relative;
+      width: 100%;
+  }
+
+  .header {
+      position: relative;
+      width: 100%;
   }
 
   .card:hover {

@@ -2,7 +2,7 @@
   <div>
     <nav-bar></nav-bar>
     <div class="container">
-       <poke-detail :selectedPokemon="selectedPokemon"></poke-detail>
+       <poke-detail :selectedPokemon="pokemonDetails"></poke-detail>
       <div class="row">
         <div class="col">
           <poke-list :pokemons="pokemons"></poke-list>
@@ -23,18 +23,28 @@ export default {
   data(){
     return {
       pokemons: [],
-      selectedPokemon: null
+      selectedPokemon: null,
+      pokemonDetails: []
     }
   },
   mounted(){
     fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
     .then(res => res.json())
-    .then(pokemons => this.pokemons = pokemons.results)
-
+    .then(pokemons => this.pokemons = pokemons.results),
 
     eventBus.$on('pokemon-selected', (selectedPokemon) => {
-      this.selectedPokemon = selectedPokemon;
-    })
+      this.selectedPokemon = selectedPokemon;}),
+    
+    eventBus.$on('pokemon-details', (details) => {
+      this.pokemonDetails = details;}),
+
+    fetch(selectedPokemon)
+    .then(res => res.json())
+    .then(details => this.pokemonDetails = details)
+
+
+   
+    
 
     // .results.forEach(pokemon => this.pokeURL.push(pokemon.url))
 

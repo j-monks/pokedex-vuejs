@@ -30,7 +30,8 @@ export default {
    data(){
     return {
       pokeIndex: [],
-      imageUrl: null
+      imageUrl: null,
+      pokemonDetails: []
     }
   },
 
@@ -41,11 +42,16 @@ export default {
   mounted(){
     this.getIndex();
     this.getUrl();
+    this.handleClick();
   },
   
   methods: {
     handleClick(){
+      fetch(this.url)
+        .then(res => res.json())
+        .then(details => this.pokemonDetails = details)
       eventBus.$emit('pokemon-selected', this.url)
+      eventBus.$emit("pokemon-details", this.pokemonDetails)
     },
     getIndex() {
      return this.pokeIndex = this.url.split("/")[6]
