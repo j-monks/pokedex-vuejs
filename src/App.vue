@@ -1,11 +1,24 @@
 <template>
   <div>
-    <nav-bar></nav-bar>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">Pokedex</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="mx-auto">
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" v-model="search" id="navBarSearchInput" type="search" placeholder="Search" aria-label="Search">
+    </form>
+    </div>
+  </div>
+</nav>
     <div class="container">
        <poke-detail :selectedPokemon="pokemonDetails"></poke-detail>
       <div class="row">
         <div class="col">
-          <poke-list :pokemons="pokemons"></poke-list>
+          <poke-list :filteredPokemon="filteredPokemon"></poke-list>
         </div>
       </div>
     </div>
@@ -24,7 +37,8 @@ export default {
     return {
       pokemons: [],
       selectedPokemon: null,
-      pokemonDetails: []
+      pokemonDetails: [],
+      search: ""
     }
   },
   mounted(){
@@ -40,11 +54,11 @@ export default {
 
     fetch(selectedPokemon)
     .then(res => res.json())
-    .then(details => this.pokemonDetails = details)
+    .then(details => this.pokemonDetails = details),
 
-
-   
-    
+    eventBus.$on('search-term', (searchData) => {
+      this.search = searchData;})
+  
 
     // .results.forEach(pokemon => this.pokeURL.push(pokemon.url))
 
@@ -57,11 +71,14 @@ export default {
     "nav-bar": NavBar,
     "poke-detail": PokeDetail
   },
-  computed: { 
-    //  getIndex(){ 
-    //   this.pokeURL.forEach(url => this.pokemonU.push(pokemon.url))
+  computed: {  
+    filteredPokemon: function() {
+      return this.pokemons.filter((pokemon) => {
+        return pokemon.name.match(this.search);
+      })
     }
   }
+  } 
 </script>
 
 <style>

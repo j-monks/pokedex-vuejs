@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="row">
-      <list-item  v-for="(pokemon, index) in pokemons" :name="pokemon.name" :url="pokemon.url" :key="index"></list-item>
+      <list-item  v-for="(pokemon, index) in filteredPokemon" :name="pokemon.name" :url="pokemon.url" :key="pokemon.name"></list-item>
   </div>
 
 </template>
@@ -9,7 +9,7 @@
 import ListItem from './ListItem.vue'
 export default {
   name: 'poke-list',
-  props: ['pokemons'],
+  props: ['filteredPokemon'],
   components: {
     "list-item": ListItem
   }

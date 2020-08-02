@@ -8,8 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="mx-auto">
     <form class="form-inline">
-        <input class="form-control mr-sm-2" id="navBarSearchInput" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" v-model="search" id="navBarSearchInput" type="search" placeholder="Search" aria-label="Search">
     </form>
     </div>
   </div>
@@ -17,8 +16,21 @@
 </template>
 
 <script>
+import { eventBus } from '../main.js'
 export default {
-
+    data() {
+        return {
+            search: "hello"
+        }
+    },
+    mounted(){
+        emitGlobalEvent();
+    },
+    methods: {
+       emitGlobalEvent() {
+          return  eventBus.$emit('search-term', this.search)
+       }    
+    }
 }
 </script>
 
