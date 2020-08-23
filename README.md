@@ -23,6 +23,7 @@ I added a search bar to this project last minute and I am glad I did, I gained a
 #### Technologies
 
 - Vue.js
+- JavaScript
 - Node
 - Bootstrap
 
